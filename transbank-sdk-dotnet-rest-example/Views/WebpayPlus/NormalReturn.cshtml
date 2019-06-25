@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "WebpayPlus Normal";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Transaction.Commit</h4>
+
+<h4>Request:</h4>
+<pre style="background-color: lightyellow;">
+    <code class="json">
+        {
+        "buy_order": "@ViewBag.BuyOrder",
+        "session_id": "@ViewBag.SessionId",
+        "amount": "@ViewBag.Amount",
+        "return_url": "@ViewBag.ReturnUrl"
+        }
+    </code>
+</pre>
+
+<h4>Response:</h4>
+<pre>
+<code>
+    @ViewBag.Result
+</code>
+</pre>
+
+<a href="javascript: document.globalForm.submit();" class="btn btn-primary">Iniciar Transacción</a>

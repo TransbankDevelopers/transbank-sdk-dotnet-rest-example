@@ -1,0 +1,37 @@
+﻿<Properties StartupConfiguration="{6044EA50-4934-4382-914B-F4A9A0722183}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="transbank-sdk-dotnet-rest-example/Views/Home/Index.cshtml">
+    <Files>
+      <File FileName="transbank-sdk-dotnet-rest-example/Controllers/WebpayPlusController.cs" Line="13" Column="1" />
+      <File FileName="transbank-sdk-dotnet-rest-example/Views/WebpayPlus/Normal.cshtml" Line="7" Column="1" />
+      <File FileName="transbank-sdk-dotnet-rest-example/Views/Shared/_Layout.cshtml" Line="10" Column="204" />
+      <File FileName="transbank-sdk-dotnet-rest-example/Views/Home/Index.cshtml" Line="3" Column="55" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="transbank-sdk-dotnet-rest-example" expanded="True">
+            <Node name="transbank-sdk-dotnet-rest-example" expanded="True">
+              <Node name="App_Start" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="Shared" expanded="True" />
+                <Node name="WebpayPlus" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.transbank-sdk-dotnet-rest-example PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.transbank-sdk-dotnet-rest-example.Tests FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
