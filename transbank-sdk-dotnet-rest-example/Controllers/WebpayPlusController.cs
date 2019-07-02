@@ -65,5 +65,23 @@ namespace transbanksdkdotnetrestexample.Controllers
 
             return View();
         }
+
+        public ActionResult NormalStatus()
+        {
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteStatus", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExecuteStatus()
+        {
+            var token = Request.Form["token_ws"];
+            var result = Transaction.Status(token);
+
+            ViewBag.Result = result;
+
+            return View();
+        }
     }
 }

@@ -90,6 +90,8 @@
     <Content Include="Views\WebpayPlus\NormalReturn.cshtml" />
     <Content Include="Views\WebpayPlus\NormalRefund.cshtml" />
     <Content Include="Views\WebpayPlus\ExecuteRefund.cshtml" />
+    <Content Include="Views\WebpayPlus\NormalStatus.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteStatus.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
