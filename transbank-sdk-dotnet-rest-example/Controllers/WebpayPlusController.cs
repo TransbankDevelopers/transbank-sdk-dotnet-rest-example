@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Transbank.Webpay.WebpayPlus;
 using Transbank.Webpay.Common;
+using System.Collections.Generic;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
@@ -9,6 +10,7 @@ namespace transbanksdkdotnetrestexample.Controllers
     {
         public ActionResult NormalCreate()
         {
+            WebpayPlus.ConfigureForTesting();
             var random = new Random();
             var buyOrder = random.Next(999999999).ToString();
             var sessionId = random.Next(999999999).ToString();
@@ -30,6 +32,7 @@ namespace transbanksdkdotnetrestexample.Controllers
         [HttpPost]
         public ActionResult NormalReturn()
         {
+            WebpayPlus.ConfigureForTesting();
             var token = Request.Form["token_ws"];
             var result = Transaction.Commit(token);
 
@@ -53,6 +56,7 @@ namespace transbanksdkdotnetrestexample.Controllers
         [HttpPost]
         public ActionResult ExecuteRefund()
         {
+            WebpayPlus.ConfigureForTesting();
             var token = Request.Form["token_ws"];
             var refundAmount = 500;
             var result = Transaction.Refund(token, refundAmount);
@@ -78,6 +82,7 @@ namespace transbanksdkdotnetrestexample.Controllers
         [HttpPost]
         public ActionResult ExecuteStatus()
         {
+            WebpayPlus.ConfigureForTesting();
             var token = Request.Form["token_ws"];
             var result = Transaction.Status(token);
 
@@ -148,6 +153,40 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.AuthorizationCode = authorizationCode;
             ViewBag.CaptureAmount = captureAmount;
             ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult MallCreate()
+        {
+            WebpayPlus.ConfigureMallForTesting();
+            var random = new Random();
+            var buyOrder = random.Next(9999999).ToString();
+            var sessionId = random.Next(9999999).ToString();
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("MallReturn", "WebpayPlus", null, Request.Url.Scheme);
+
+            var transactions = new List<TransactionDetail>();
+            transactions.Add(new TransactionDetail(
+                amount: random.Next(9999999),
+                commerceCode: "597055555536",
+                buyOrder: random.Next(9999999).ToString()
+            ));
+            transactions.Add(new TransactionDetail(
+                amount: random.Next(9999999),
+                commerceCode: "597055555537",
+                buyOrder: random.Next(9999999).ToString()
+            ));
+
+            var result = MallTransaction.Create(buyOrder, sessionId, returnUrl, transactions);
+
+            ViewBag.Result = result;
+            ViewBag.BuyOrder = buyOrder;
+            ViewBag.SessionId = sessionId;
+            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.Transactions = transactions;
+            ViewBag.Action = result.Url;
+            ViewBag.Token = result.Token;
 
             return View();
         }

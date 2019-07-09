@@ -96,6 +96,7 @@
     <Content Include="Views\WebpayPlus\ExecuteCapture.cshtml" />
     <Content Include="Views\WebpayPlus\DeferredCreate.cshtml" />
     <Content Include="Views\WebpayPlus\DeferredReturn.cshtml" />
+    <Content Include="Views\WebpayPlus\MallCreate.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
