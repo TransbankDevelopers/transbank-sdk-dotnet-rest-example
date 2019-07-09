@@ -95,15 +95,14 @@ namespace transbanksdkdotnetrestexample.Controllers
 
         public ActionResult DeferredCreate()
         {
+            WebpayPlus.ConfigureDeferredForTesting();
             var random = new Random();
             var buyOrder = random.Next(999999999).ToString();
             var sessionId = random.Next(999999999).ToString();
             var amount = random.Next(1000, 999999);
             UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var returnUrl = urlHelper.Action("DeferredReturn", "WebpayPlus", null, Request.Url.Scheme);
-            var result = Transaction.Create(buyOrder, sessionId, amount, returnUrl, new Options(
-                "597055555540", "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C",
-                WebpayIntegrationType.Test));
+            var result = Transaction.Create(buyOrder, sessionId, amount, returnUrl);
 
             ViewBag.BuyOrder = buyOrder;
             ViewBag.SessionId = sessionId;
@@ -118,10 +117,9 @@ namespace transbanksdkdotnetrestexample.Controllers
         [HttpPost]
         public ActionResult DeferredReturn()
         {
+            WebpayPlus.ConfigureDeferredForTesting();
             var token = Request.Form["token_ws"];
-            var result = Transaction.Commit(token, new Options(
-                "597055555540", "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C",
-                WebpayIntegrationType.Test));
+            var result = Transaction.Commit(token);
 
             UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
