@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transbank-sdk-dotnet-webpay
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transbank-sdk-dotnet-webpay-rest-example.Tests", "transbank-sdk-dotnet-rest-example.Tests\transbank-sdk-dotnet-webpay-rest-example.Tests.csproj", "{EABE8F69-F968-4336-824A-75F4686AFA23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transbank", "..\transbank-sdk-dotnet\Transbank\Transbank.csproj", "{5796333B-8826-4212-8849-C33A906642BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{EABE8F69-F968-4336-824A-75F4686AFA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EABE8F69-F968-4336-824A-75F4686AFA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EABE8F69-F968-4336-824A-75F4686AFA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5796333B-8826-4212-8849-C33A906642BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5796333B-8826-4212-8849-C33A906642BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5796333B-8826-4212-8849-C33A906642BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5796333B-8826-4212-8849-C33A906642BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
