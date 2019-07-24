@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using Transbank.Webpay.WebpayPlus;
 using Transbank.Webpay.Common;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
@@ -186,6 +187,24 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Action = result.Url;
             ViewBag.Token = result.Token;
 
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult MallReturn()
+        {
+            WebpayPlus.ConfigureMallForTesting();
+            var token = Request.Form["token_ws"];
+            var result = MallTransaction.Commit(token);
+
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+
+            ViewBag.Token = token;
+            ViewBag.Action = urlHelper.Action("ExecuteMallRefund", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Result = result;
+            ViewBag.SaveToken = token;
+
+            ViewBag.Success = result.Details.All(detail => detail.ResponseCode == 0);
             return View();
         }
     }
