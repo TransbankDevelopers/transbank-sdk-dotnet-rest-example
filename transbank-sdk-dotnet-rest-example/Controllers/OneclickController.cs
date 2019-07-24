@@ -9,11 +9,12 @@ namespace transbanksdkdotnetrestexample.Controllers
 {
     public class OneclickController : Controller
     {
+        public string UserName = "Pepito Continuum";
+        public string Email = "pepito@continuum.co";
+        public string TbkUser;
+
         public ActionResult InscriptionStart()
         {
-            var UserName = "Pepito Continuum";
-            var Email = "pepito@continuum.co";
-
             UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var ResponseURL = urlHelper.Action("InscriptionFinish", "Oneclick", null, Request.Url.Scheme);
             var result = Inscription.Start(UserName, Email, ResponseURL);
