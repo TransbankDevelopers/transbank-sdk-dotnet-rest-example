@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -45,6 +45,14 @@
     @if (!String.IsNullOrEmpty(ViewBag.SaveToken))
     {
         <script>window.localStorage.setItem("savedToken", "@ViewBag.SaveToken");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveAmount))
+    {
+        <script>window.localStorage.setItem("savedAmount", "@ViewBag.SaveAmount");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveAuthorizationCode))
+    {
+        <script>window.localStorage.setItem("savedAuthorizationCode", "@ViewBag.SaveAuthorizationCode");</script>
     }
 </body>
 </html>
