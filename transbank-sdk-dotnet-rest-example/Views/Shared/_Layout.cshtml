@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -30,6 +30,16 @@
             document.getElementById("token_ws").value = document.getElementById("token_input").value;
             window.localStorage.setItem("savedToken", document.getElementById("token_input").value);
             document.globalForm.submit();
+        }
+        function appendToGlobalFormAndSend(idsArray){
+            idsArray.forEach(function(id){
+                var input = document.getElementById(id);
+                var value = input.value;
+                input.setAttribute('id', `${id}_copied`);
+                document.globalForm.innerHTML = document.globalForm.innerHTML + 
+                    `<input type="hidden" name="${id}" value="${value}">`;
+            });
+            sendToken();
         }
     </script>
     @if (!String.IsNullOrEmpty(ViewBag.SaveToken))
