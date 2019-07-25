@@ -31,10 +31,28 @@
             window.localStorage.setItem("savedToken", document.getElementById("token_input").value);
             document.globalForm.submit();
         }
+        function appendToGlobalFormAndSend(idsArray){
+            idsArray.forEach(function(id){
+                var input = document.getElementById(id);
+                var value = input.value;
+                input.setAttribute('id', `${id}_copied`);
+                document.globalForm.innerHTML = document.globalForm.innerHTML + 
+                    `<input type="hidden" name="${id}" value="${value}">`;
+            });
+            sendToken();
+        }
     </script>
     @if (!String.IsNullOrEmpty(ViewBag.SaveToken))
     {
         <script>window.localStorage.setItem("savedToken", "@ViewBag.SaveToken");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveAmount))
+    {
+        <script>window.localStorage.setItem("savedAmount", "@ViewBag.SaveAmount");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveAuthorizationCode))
+    {
+        <script>window.localStorage.setItem("savedAuthorizationCode", "@ViewBag.SaveAuthorizationCode");</script>
     }
 </body>
 </html>

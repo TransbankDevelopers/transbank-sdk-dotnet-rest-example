@@ -9,6 +9,7 @@ namespace transbanksdkdotnetrestexample.Controllers
 {
     public class WebpayPlusController : Controller
     {
+        #region Webpay Plus
         public ActionResult NormalCreate()
         {
             var random = new Random();
@@ -88,12 +89,9 @@ namespace transbanksdkdotnetrestexample.Controllers
             return View();
         }
 
-        public ActionResult DeferredCapture()
-        {
-            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            ViewBag.Action = urlHelper.Action("ExecuteCapture", "WebpayPlus", null, Request.Url.Scheme);
-            return View();
-        }
+        #endregion Webpay Plus
+
+        #region Webpay Plus Deferred
 
         public ActionResult DeferredCreate()
         {
@@ -124,21 +122,28 @@ namespace transbanksdkdotnetrestexample.Controllers
             UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
             ViewBag.Token = token;
-            ViewBag.Action = urlHelper.Action("ExecuteCapture", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Action = urlHelper.Action("ExecuteDeferredCapture", "WebpayPlus", null, Request.Url.Scheme);
             ViewBag.Result = result;
             ViewBag.SaveToken = token;
+            ViewBag.SaveAmount = result.Amount.ToString();
+            ViewBag.SaveAuthorizationCode = result.AuthorizationCode;
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult ExecuteCapture()
+        public ActionResult ExecuteDeferredCapture()
         {
             var token = Request.Form["token_ws"];
             var buyOrder = Request.Form["buy_order"];
             var authorizationCode = Request.Form["authorization_code"];
             var captureAmount = decimal.Parse(Request.Form["capture_amount"]);
             var result = DeferredTransaction.Capture(token, buyOrder, authorizationCode, captureAmount);
+
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteDeferredRefund", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Token = token;
+            ViewBag.SaveToken = token;
 
             ViewBag.BuyOrder = buyOrder;
             ViewBag.AuthorizationCode = authorizationCode;
@@ -147,6 +152,50 @@ namespace transbanksdkdotnetrestexample.Controllers
 
             return View();
         }
+
+        public ActionResult DeferredRefund()
+        {
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteDeferredRefund", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExecuteDeferredRefund()
+        {
+            var token = Request.Form["token_ws"];
+            var amount = decimal.Parse(Request.Form["amount"]);
+            var result = DeferredTransaction.Refund(token, amount);
+
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteDeferredStatus", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Token = token;
+
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult DeferredStatus(){
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteDeferredStatus", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExecuteDeferredStatus()
+        {
+            var token = Request.Form["token_ws"];
+            var result = DeferredTransaction.Status(token);
+
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        #endregion Webpay Plus Deferred
+
+        #region Webpay Plus Mall
 
         public ActionResult MallCreate()
         {
@@ -197,5 +246,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Success = result.Details.All(detail => detail.ResponseCode == 0);
             return View();
         }
+
+        #endregion Webpay Plus Mall
     }
 }
