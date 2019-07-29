@@ -11,7 +11,6 @@ namespace transbanksdkdotnetrestexample.Controllers
     {
         public string UserName = "Pepito Continuum";
         public string Email = "pepito@continuum.co";
-        public string TbkUser;
 
         public ActionResult InscriptionStart()
         {
