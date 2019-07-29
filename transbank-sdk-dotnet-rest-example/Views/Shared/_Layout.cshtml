@@ -35,6 +35,9 @@
     @if (!String.IsNullOrEmpty(ViewBag.SaveToken))
     {
         <script>window.localStorage.setItem("savedToken", "@ViewBag.SaveToken");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveTbkUser))
+    {
         <script>windows.localStorage.setItem("savedUser", "@ViewBag.SaveTbkUser");</script>
     }
 </body>

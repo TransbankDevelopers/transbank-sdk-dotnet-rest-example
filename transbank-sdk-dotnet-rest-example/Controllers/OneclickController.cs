@@ -40,7 +40,40 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Token = token;
             ViewBag.Result = result;
             ViewBag.SaveToken = token;
-            ViewBag.SaveTbkUser = result.TransbankUser;
+
+            ViewBag.TbkUser = result.TbkUser;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InscriptionDelete()
+        {
+            string TbkUser = Request.Form["TbkUser"];
+
+            try
+            {
+                Inscription.Delete(UserName, TbkUser);
+                ViewBag.Result = "Success";
+            }
+            catch (Exception e)
+            {
+                ViewBag.Result = e.Message;
+            }
+
+            ViewBag.UserName = UserName;
+            ViewBag.TbkUser = TbkUser;
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PaymentAuthorize()
+        {
+            ViewBag.UserName = UserName;
+            //ViewBag.TbkUser = TbkUser;
+            ViewBag.BuyOrder = "OC"+ new Random(1000);
+
 
             return View();
         }

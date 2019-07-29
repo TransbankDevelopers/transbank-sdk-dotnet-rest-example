@@ -22,6 +22,11 @@ POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/ins
 </code>
 </pre>
 
-<a href="/Oneclick/InscriptionDelete" class="btn btn-primary">Eliminar Inscripción</a>
+<form name="deleteForm" method="post" action="/Oneclick/InscriptionDelete">
+    <input type="hidden" name="TbkUser" id="TbkUser" value="@ViewBag.TbkUser" />
+</form>
+
+<a href="/Oneclick/PaymentAuthorize" class="btn btn-primary">Authorizar Pago</a>
+<a href="javascript: document.deleteForm.submit();" class="btn btn-primary">Eliminar Inscripción</a>
 <a href="/" class="btn btn-primary">Volver al Home</a>
 

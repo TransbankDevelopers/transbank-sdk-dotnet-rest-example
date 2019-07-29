@@ -3,14 +3,15 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<h4>Inscription.Finish</h4>
+<h4>Inscription.Delete</h4>
 
 <h4>Request:</h4>
 <pre style="background-color: lightyellow;">
-POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/inscriptions/{token}
+DELETE: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/inscriptions/
 <code class="json">
     {
-        "token": "@ViewBag.Token"
+        "username": "@ViewBag.UserName"
+        "tbk_user": "@ViewBag.TbkUser"
     }
 </code>
 </pre>
@@ -22,7 +23,5 @@ POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/ins
 </code>
 </pre>
 
-<a href="/Oneclick/PaymentAuthorize" class="btn btn-primary">Authorizar Pago</a>
-<a href="/Oneclick/InscriptionDelete" class="btn btn-primary">Eliminar Inscripción</a>
 <a href="/" class="btn btn-primary">Volver al Home</a>
 

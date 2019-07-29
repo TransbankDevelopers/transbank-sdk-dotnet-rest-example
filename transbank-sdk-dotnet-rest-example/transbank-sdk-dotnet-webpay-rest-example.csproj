@@ -93,6 +93,8 @@
     <Content Include="Views\WebpayPlus\ExecuteStatus.cshtml" />
     <Content Include="Views\Oneclick\InscriptionStart.cshtml" />
     <Content Include="Views\Oneclick\InscriptionFinish.cshtml" />
+    <Content Include="Views\Oneclick\PaymentAuthorize.cshtml" />
+    <Content Include="Views\Oneclick\InscriptionDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
