@@ -20,6 +20,13 @@ PUT: https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transa
 </code>
 </pre>
 
+<form>
+    <input type="hidden" name="token_input" id="token_input" value="@ViewBag.Token">
+    <input type="hidden" name="amount" id="amount" value="@ViewBag.SaveAmount">
+    <input type="hidden" name="commerce_code" id="commerce_code" value="@ViewBag.SaveCommerceCode">
+    <input type="hidden" name="buy_order" id="buy_order" value="@ViewBag.SaveBuyOrder">
+</form>
+
 @if (ViewBag.Success)
 {
     <p>Transacción confirmada con éxito.</p>
@@ -28,5 +35,5 @@ else
 {
     <p>Error al confirmar transacción.</p>
 }
-<a href="javascript: document.globalForm.submit();" class="btn btn-danger">Reembolsar transaccion</a>
+<a href="javascript:appendToGlobalFormAndSend(['amount', 'commerce_code', 'buy_order']);" class="btn btn-danger">Reembolsar transaccion</a>
 @Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary" })
