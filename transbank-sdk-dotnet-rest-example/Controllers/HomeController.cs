@@ -11,6 +11,7 @@ namespace transbanksdkdotnetrestexample.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Transbank .Net SDK";
             return View();
         }
     }
