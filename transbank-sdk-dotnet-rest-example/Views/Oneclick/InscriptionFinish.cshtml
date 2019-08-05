@@ -26,7 +26,9 @@ PUT: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/insc
     <input type="hidden" name="TbkUser" id="TbkUser" value="@ViewBag.TbkUser" />
 </form>
 
-<a href="/Oneclick/PaymentAuthorize" class="btn btn-primary">Authorizar Pago</a>
+<form name="authorizeForm" method="post" action="/Oneclick/TransactionAuthorize"></form>
+
+<a href="javascript: document.authorizeForm.submit();" class="btn btn-primary">Autorizar Transacción</a>
 <a href="javascript: document.deleteForm.submit();" class="btn btn-primary">Eliminar Inscripción</a>
 <a href="/" class="btn btn-primary">Volver al Home</a>
 

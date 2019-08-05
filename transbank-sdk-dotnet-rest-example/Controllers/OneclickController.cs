@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Transbank.Webpay.Oneclick;
+using Transbank.Webpay.Common;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
@@ -68,12 +69,29 @@ namespace transbanksdkdotnetrestexample.Controllers
         }
 
         [HttpPost]
-        public ActionResult PaymentAuthorize()
+        public ActionResult TransactionAuthorize()
         {
-            ViewBag.UserName = UserName;
-            //ViewBag.TbkUser = TbkUser;
+            string TbkUser = Request.Form["TbkUser"];
+
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var ResponseURL = urlHelper.Action("TransactionAuthorizeFinish", "Oneclick", null, Request.Url.Scheme);
+
             ViewBag.BuyOrder = "OC"+ new Random(1000);
 
+            ViewBag.CommerceA = Oneclick.CommerceCode[1];
+            ViewBag.CommerceABuyOrder = "OCA" + new Random(1000);
+            ViewBag.CommerceAAmmount = 2500;
+
+            ViewBag.CommerceB = Oneclick.CommerceCode[1];
+            ViewBag.CommerceBBuyOrder = "OCB" + new Random(1000);
+            ViewBag.CommerceBAmmount = 500;
+
+            PaymentRequest comerceA = new PaymentRequest(ViewBag.CommerceA, ViewBag.CommerceABuyOrder, ViewBag.CommerceAAmmount);
+            PaymentRequest comerceB = new PaymentRequest(ViewBag.CommerceB, ViewBag.CommerceBBuyOrder, ViewBag.CommerceBAmmount);
+
+            var result = MallTransaction.Authorize(UserName, TbkUser, ViewBag.BuyOrder, new List<PaymentRequest> { comerceA, comerceB });
+
+            ViewBag.Result = result.toString();
 
             return View();
         }
