@@ -64,33 +64,9 @@ namespace transbanksdkdotnetrestexample.Controllers
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
             ViewBag.Token = token;
-            ViewBag.Action = urlHelper.Action("Refund", "PatpassByWebpay", null, Request.Url.Scheme);
+            ViewBag.Action = urlHelper.Action("Status", "PatpassByWebpay", null, Request.Url.Scheme);
             ViewBag.Result = result;
             ViewBag.SaveToken = token;
-
-            return View();
-        }
-
-        public ActionResult StartRefund()
-        {
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            ViewBag.Action = urlHelper.Action("Refund", "PatpassByWebpay", null, Request.Url.Scheme);
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Refund()
-        {
-            var token = Request.Form["token_ws"];
-            var refundAmount = 500;
-            var result = Transaction.Refund(token, refundAmount);
-
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            ViewBag.Action = urlHelper.Action("Status", "PatpassByWebpay", null, Request.Url.Scheme);
-
-            ViewBag.Token = token;
-            ViewBag.Amount = refundAmount;
-            ViewBag.Result = result;
 
             return View();
         }

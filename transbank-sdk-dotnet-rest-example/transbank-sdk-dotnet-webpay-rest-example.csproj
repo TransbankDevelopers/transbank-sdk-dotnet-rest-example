@@ -102,8 +102,6 @@
     <Content Include="Views\WebpayPlus\DeferredStatus.cshtml" />
     <Content Include="Views\PatpassByWebpay\Create.cshtml" />
     <Content Include="Views\PatpassByWebpay\Commit.cshtml" />
-    <Content Include="Views\PatpassByWebpay\Refund.cshtml" />
-    <Content Include="Views\PatpassByWebpay\StartRefund.cshtml" />
     <Content Include="Views\PatpassByWebpay\Status.cshtml" />
     <Content Include="Views\PatpassByWebpay\RequestStatus.cshtml" />
   </ItemGroup>
