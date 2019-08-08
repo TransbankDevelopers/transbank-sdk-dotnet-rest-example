@@ -265,6 +265,9 @@ namespace transbanksdkdotnetrestexample.Controllers
             var buyOrder = Request.Form["buy_order"];
             var commerceCode = Request.Form["commerce_code"];
             var amount = decimal.Parse(Request.Form["amount"]);
+            ViewBag.Token = token;
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallStatus", "WebpayPlus", null, Request.Url.Scheme);
 
             ViewBag.SaveAmount = amount;
             ViewBag.SaveCommerceCode = commerceCode;
@@ -274,6 +277,25 @@ namespace transbanksdkdotnetrestexample.Controllers
             var result = MallTransaction.Refund(token, buyOrder, commerceCode, amount);
 
             ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult MallStatus()
+        {
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallStatus", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        public ActionResult ExecuteMallStatus()
+        {
+            var token = Request.Form["token_ws"];
+
+            var result = MallTransaction.Status(token);
+
+            ViewBag.Result = result;
+            ViewBag.SaveToke = token;
 
             return View();
         }
