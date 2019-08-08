@@ -29,7 +29,7 @@ else
     <p>Error al solicitar estado de la transacción.</p>
 }
 
-@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary", @style = "margin-top: 20px;" })
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary", style = "margin-top: 20px;"})
 
 <script>
     var token = window.localStorage.getItem("savedToken");
