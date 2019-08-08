@@ -100,6 +100,10 @@
     <Content Include="Views\WebpayPlus\ExecuteDeferredRefund.cshtml" />
     <Content Include="Views\WebpayPlus\ExecuteDeferredStatus.cshtml" />
     <Content Include="Views\WebpayPlus\DeferredStatus.cshtml" />
+    <Content Include="Views\WebpayPlus\MallRefund.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallRefund.cshtml" />
+    <Content Include="Views\WebpayPlus\MallStatus.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallStatus.cshtml" />
     <Content Include="Views\PatpassByWebpay\Create.cshtml" />
     <Content Include="Views\PatpassByWebpay\Commit.cshtml" />
     <Content Include="Views\PatpassByWebpay\Status.cshtml" />

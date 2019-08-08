@@ -244,8 +244,60 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Action = urlHelper.Action("ExecuteMallRefund", "WebpayPlus", null, Request.Url.Scheme);
             ViewBag.Result = result;
             ViewBag.SaveToken = token;
+            ViewBag.SaveAmount = result.Details.First().Amount;
+            ViewBag.SaveCommerceCode = result.Details.First().CommerceCode;
+            ViewBag.SaveBuyOrder = result.Details.First().BuyOrder;
 
             ViewBag.Success = result.Details.All(detail => detail.ResponseCode == 0);
+            return View();
+        }
+
+        public ActionResult MallRefund()
+        {
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallRefund", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ExecuteMallRefund()
+        {
+            var token = Request.Form["token_ws"];
+            var buyOrder = Request.Form["buy_order"];
+            var commerceCode = Request.Form["commerce_code"];
+            var amount = decimal.Parse(Request.Form["amount"]);
+            ViewBag.Token = token;
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallStatus", "WebpayPlus", null, Request.Url.Scheme);
+
+            ViewBag.SaveAmount = amount;
+            ViewBag.SaveCommerceCode = commerceCode;
+            ViewBag.SaveToken = token;
+            ViewBag.SaveBuyOrder = buyOrder;
+
+            var result = MallTransaction.Refund(token, buyOrder, commerceCode, amount);
+
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult MallStatus()
+        {
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallStatus", "WebpayPlus", null, Request.Url.Scheme);
+            return View();
+        }
+
+        public ActionResult ExecuteMallStatus()
+        {
+            var token = Request.Form["token_ws"];
+
+            var result = MallTransaction.Status(token);
+
+            ViewBag.Result = result;
+            ViewBag.SaveToke = token;
+
             return View();
         }
 

@@ -42,17 +42,25 @@
             sendToken();
         }
     </script>
-@if (!string.IsNullOrEmpty(ViewBag.SaveToken))
-{
-    <script>window.localStorage.setItem("savedToken", "@ViewBag.SaveToken");</script>
-}
-@if (!string.IsNullOrEmpty(ViewBag.SaveAmount))
-{
-    <script>window.localStorage.setItem("savedAmount", "@ViewBag.SaveAmount");</script>
-}
-@if (!string.IsNullOrEmpty(ViewBag.SaveAuthorizationCode))
-{
-    <script>window.localStorage.setItem("savedAuthorizationCode", "@ViewBag.SaveAuthorizationCode");</script>
-}
+    @if (!String.IsNullOrEmpty(ViewBag.SaveToken))
+    {
+        <script>window.localStorage.setItem("savedToken", "@ViewBag.SaveToken");</script>
+    }
+    @if (ViewBag.SaveAmount != null)
+    {
+        <script>window.localStorage.setItem("savedAmount", "@ViewBag.SaveAmount.ToString()");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveAuthorizationCode))
+    {
+        <script>window.localStorage.setItem("savedAuthorizationCode", "@ViewBag.SaveAuthorizationCode");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveCommerceCode))
+    {
+        <script>window.localStorage.setItem("savedCommerceCode", "@ViewBag.SaveCommerceCode");</script>
+    }
+    @if (!String.IsNullOrEmpty(ViewBag.SaveBuyOrder))
+    {
+        <script>window.localStorage.setItem("savedBuyOrder", "@ViewBag.SaveBuyOrder");</script>
+    }
 </body>
 </html>
