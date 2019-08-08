@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Webpay Plus";
+    ViewBag.Title = "Patpass by Webpay";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -28,5 +28,5 @@ else
 {
     <p>Error al confirmar transacción.</p>
 }
-<a href="javascript: document.globalForm.submit();" class="btn btn-danger">Reembolsar transaccion</a>
+<a href="javascript: document.globalForm.submit();" class="btn btn-primary">Estado de la transaccion</a>
 @Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary"})

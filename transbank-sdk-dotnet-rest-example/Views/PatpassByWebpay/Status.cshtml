@@ -1,9 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Webpay Plus Diferido";
+    ViewBag.Title = "Patpass by Webpay";
 }
 
 <h2>@ViewBag.Title</h2>
-<h4>DeferredTransaction.Status</h4>
+<h4>Transaction.Status</h4>
 
 <h4>Request:</h4>
 <pre style="background-color: lightyellow;">
@@ -29,9 +29,7 @@ else
     <p>Error al solicitar estado de la transacción.</p>
 }
 
-@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary", style = "margin-top: 20px;"})
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary", style = "margin-top: 20px;" })
 
-<script>
-    var token = window.localStorage.getItem("savedToken");
-    document.getElementById("token").innerHTML = token;
-</script>
+<script>var token = window.localStorage.getItem("savedToken");
+    document.getElementById("token").innerHTML = token;</script>

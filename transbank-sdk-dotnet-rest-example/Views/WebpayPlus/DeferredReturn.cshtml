@@ -25,7 +25,7 @@ else
     <p>Error al confirmar transacción.</p>
 }
 <a href="javascript: document.globalForm.submit();" class="btn btn-info">Capturar transacción</a>
-@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary"})
 
 <script>
     document.globalForm.innerHTML += '<input type="hidden" name="buy_order" id="buy_order" value="@ViewBag.Result.BuyOrder" />'

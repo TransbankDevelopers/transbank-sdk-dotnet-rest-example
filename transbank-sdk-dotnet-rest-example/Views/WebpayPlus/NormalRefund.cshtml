@@ -12,11 +12,11 @@
 
 <div class="form-group">
     <label for="token_ws">Token</label>
-    <input type="text" name="token_input" id="token_input" class="form-control" />
+    <input type="text" name="token_input" id="token_input" class="form-control"/>
 </div>
 <a href="javascript: sendToken();" class="btn btn-danger">Ejecutar reembolso</a>
 
-@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary"})
 
 <script>
     var token = window.localStorage.getItem("savedToken");

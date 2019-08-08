@@ -30,7 +30,7 @@ else
 }
 
 <a href="javascript: document.globalForm.submit();" class="btn btn-info">Anular transacción</a>
-@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary" })
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary"})
 
 <script>
     window.localStorage.setItem('BuyOrder','@ViewBag.BuyOrder');
