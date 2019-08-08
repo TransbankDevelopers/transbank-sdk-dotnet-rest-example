@@ -59,15 +59,13 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Transbank">
-      <HintPath>..\..\..\SDKs\transbank-sdk-dotnet\Transbank\bin\Debug\net452\Transbank.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\WebpayPlus\" />
+    <Folder Include="Views\PatpassByWebpay\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
@@ -76,6 +74,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\WebpayPlusController.cs" />
+    <Compile Include="Controllers\PatpassByWebpayController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -101,6 +100,18 @@
     <Content Include="Views\WebpayPlus\ExecuteDeferredRefund.cshtml" />
     <Content Include="Views\WebpayPlus\ExecuteDeferredStatus.cshtml" />
     <Content Include="Views\WebpayPlus\DeferredStatus.cshtml" />
+    <Content Include="Views\PatpassByWebpay\Create.cshtml" />
+    <Content Include="Views\PatpassByWebpay\Commit.cshtml" />
+    <Content Include="Views\PatpassByWebpay\Refund.cshtml" />
+    <Content Include="Views\PatpassByWebpay\StartRefund.cshtml" />
+    <Content Include="Views\PatpassByWebpay\Status.cshtml" />
+    <Content Include="Views\PatpassByWebpay\RequestStatus.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
+      <Project>{0381863D-61D0-4541-B0C5-BE41D02C351C}</Project>
+      <Name>Transbank</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
