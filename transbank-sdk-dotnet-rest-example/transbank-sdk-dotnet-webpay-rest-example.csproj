@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{0381863D-61D0-4541-B0C5-BE41D02C351C}</Project>
+      <Project>{e4ed865c-c359-4c99-bfc4-fdf95fb206b6}</Project>
       <Name>Transbank</Name>
     </ProjectReference>
   </ItemGroup>
