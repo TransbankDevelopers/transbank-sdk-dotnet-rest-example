@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transbank-sdk-dotnet-webpay-rest-example", "transbank-sdk-dotnet-rest-example\transbank-sdk-dotnet-webpay-rest-example.csproj", "{6044EA50-4934-4382-914B-F4A9A0722183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transbank-sdk-dotnet-webpay-rest-example.Tests", "transbank-sdk-dotnet-rest-example.Tests\transbank-sdk-dotnet-webpay-rest-example.Tests.csproj", "{EABE8F69-F968-4336-824A-75F4686AFA23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transbank", "..\..\SDK\transbank-sdk-dotnet\Transbank\Transbank.csproj", "{26ABDBA6-0B33-42D8-9240-4B51D5EFFCC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +15,9 @@ Global
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EABE8F69-F968-4336-824A-75F4686AFA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EABE8F69-F968-4336-824A-75F4686AFA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EABE8F69-F968-4336-824A-75F4686AFA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EABE8F69-F968-4336-824A-75F4686AFA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26ABDBA6-0B33-42D8-9240-4B51D5EFFCC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26ABDBA6-0B33-42D8-9240-4B51D5EFFCC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26ABDBA6-0B33-42D8-9240-4B51D5EFFCC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26ABDBA6-0B33-42D8-9240-4B51D5EFFCC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
