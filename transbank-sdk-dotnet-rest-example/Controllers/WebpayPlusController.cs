@@ -309,7 +309,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var buyOrder = random.Next(9999999).ToString();
             var sessionId = random.Next(9999999).ToString();
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            var returnUrl = urlHelper.Action("MallReturn", "WebpayPlus", null, Request.Url.Scheme);
+            var returnUrl = urlHelper.Action("MallDeferredCommit", "WebpayPlus", null, Request.Url.Scheme);
 
             var transactions = new List<TransactionDetail>();
             transactions.Add(new TransactionDetail(
@@ -335,8 +335,32 @@ namespace transbanksdkdotnetrestexample.Controllers
 
             return View();
         }
+        
+        public ActionResult MallDeferredCommit()
+        {
+            var token = Request.Form["token_ws"];
+            var result = MallDeferredTransaction.Commit(token);
+
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+
+            ViewBag.Token = token;
+            ViewBag.Action = urlHelper.Action("ExecuteMallDeferredRefund", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Result = result;
+            ViewBag.SaveToken = token;
+            ViewBag.SaveAmount = result.Details.First().Amount;
+            ViewBag.SaveCommerceCode = result.Details.First().CommerceCode;
+            ViewBag.SaveBuyOrder = result.Details.First().BuyOrder;
+
+            ViewBag.Success = result.Details.All(detail => detail.ResponseCode == 0);
+            return View();
+        }
 
         public ActionResult MallDeferredRefund()
+        {
+            throw new NotImplementedException();
+        }
+        
+        public ActionResult ExecuteMallDeferredRefund()
         {
             throw new NotImplementedException();
         }
@@ -345,5 +369,6 @@ namespace transbanksdkdotnetrestexample.Controllers
         {
             throw new NotImplementedException();
         }
+
     }
 }
