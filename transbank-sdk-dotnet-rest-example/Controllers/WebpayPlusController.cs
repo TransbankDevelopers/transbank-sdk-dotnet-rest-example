@@ -302,5 +302,48 @@ namespace transbanksdkdotnetrestexample.Controllers
         }
 
         #endregion Webpay Plus Mall
+
+        public ActionResult MallDeferredCreate()
+        {
+            var random = new Random();
+            var buyOrder = random.Next(9999999).ToString();
+            var sessionId = random.Next(9999999).ToString();
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("MallReturn", "WebpayPlus", null, Request.Url.Scheme);
+
+            var transactions = new List<TransactionDetail>();
+            transactions.Add(new TransactionDetail(
+                random.Next(9999999),
+                "597055555545",
+                random.Next(9999999).ToString()
+            ));
+            transactions.Add(new TransactionDetail(
+                random.Next(9999999),
+                "597055555546",
+                random.Next(9999999).ToString()
+            ));
+            
+            var result = MallDeferredTransaction.Create(buyOrder, sessionId, returnUrl, transactions);
+
+            ViewBag.Result = result;
+            ViewBag.BuyOrder = buyOrder;
+            ViewBag.SessionId = sessionId;
+            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.Transactions = transactions;
+            ViewBag.Action = result.Url;
+            ViewBag.Token = result.Token;
+
+            return View();
+        }
+
+        public ActionResult MallDeferredRefund()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActionResult MallDeferredStatus()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
