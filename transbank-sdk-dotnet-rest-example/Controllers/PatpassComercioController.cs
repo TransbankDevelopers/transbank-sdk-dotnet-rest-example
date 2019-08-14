@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using Transbank.Common;
 using Transbank.Patpass.PatpassComercio;
 
 namespace transbanksdkdotnetrestexample.Controllers
@@ -69,6 +72,19 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Commerce_email = commerce_email;
             ViewBag.Address = address;
             ViewBag.City = city;
+
+            return View();
+        }
+
+        public ActionResult Status()
+        {
+            var token = Request.Form["token_ws"];
+            var result = Inscription.Status(token);
+            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+
+            ViewBag.Action = urlHelper.Action("Status", "PatpassComercio", null, Request.Url.Scheme);
+            ViewBag.Result = result;
 
             return View();
         }
