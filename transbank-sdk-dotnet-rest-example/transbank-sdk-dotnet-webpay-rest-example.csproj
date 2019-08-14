@@ -8,7 +8,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>transbanksdkdotnetrestexample</RootNamespace>
     <AssemblyName>transbank-sdk-dotnet-rest-example</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,9 +75,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
     <Folder Include="Views\WebpayPlus\" />
     <Folder Include="Views\PatpassByWebpay\" />
   </ItemGroup>
@@ -97,6 +95,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\WebpayPlus\MallDeferredCreate.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
@@ -126,8 +125,8 @@
     <Content Include="Views\PatpassByWebpay\RequestStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SDK\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{26abdba6-0b33-42d8-9240-4b51d5effcc7}</Project>
+    <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
+      <Project>{e4ed865c-c359-4c99-bfc4-fdf95fb206b6}</Project>
       <Name>Transbank</Name>
     </ProjectReference>
   </ItemGroup>
