@@ -100,8 +100,13 @@
         <td>
             <h3>-</h3>
         </td>
-        @* <td> *@
-        @*     <h3>@Html.ActionLink("Estado de la Inscription", "InscriptionStatus", "PatpassComercio")</h3> *@
-        @* </td> *@
+    </tr>
+    <tr>
+        <td>
+            <h3>Transaccion Completa</h3>
+        </td>
+        <td>
+            <h3>@Html.ActionLink("Iniciar Transaccion", "Create", "TransaccionCompleta")</h3>
+        </td>
     </tr>
 </table>
