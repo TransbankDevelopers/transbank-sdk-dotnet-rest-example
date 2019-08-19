@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Transbank.Common;
-using Transbank.Webpay.TransaccionCompleta;
+using Transbank.Webpay.FullTransaction;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
