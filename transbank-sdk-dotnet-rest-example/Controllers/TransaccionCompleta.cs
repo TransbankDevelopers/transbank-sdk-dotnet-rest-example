@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Transbank.Common;
-using Transbank.Webpay.FullTransaction;
+using Transbank.Webpay.TransaccionCompleta;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
@@ -24,7 +24,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var returnUrl = urlHelper.Action("Create", "TransaccionCompleta", null, Request.Url.Scheme);
 
-            var result = Transaction.Create(
+            var result = FullTransaction.Create(
                 buyOrder: buy_order,
                 sessionId: session_id,
                 amount: amount,
