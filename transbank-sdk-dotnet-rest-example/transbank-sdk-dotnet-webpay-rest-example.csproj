@@ -97,6 +97,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallDeferredRefund.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallDeferredStatus.cshtml" />
     <Content Include="Views\WebpayPlus\MallDeferredCommit.cshtml" />
     <Content Include="Views\WebpayPlus\MallDeferredCreate.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
