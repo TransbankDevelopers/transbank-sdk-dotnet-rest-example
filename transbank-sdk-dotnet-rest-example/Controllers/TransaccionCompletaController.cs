@@ -7,7 +7,7 @@ using Transbank.Webpay.TransaccionCompleta;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
-    public class TransaccionCompleta : Controller
+    public class TransaccionCompletaController : Controller
     {
 
         public ActionResult Create()
@@ -18,7 +18,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var session_id = random.Next(9999999).ToString();
             var amount = random.Next(1000, 999999);
             var cvv = 123;
-            var card_number = "4239000000000000";
+            var card_number = "4051885600446623";
             var card_expiration_date = "22/10";
             
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);

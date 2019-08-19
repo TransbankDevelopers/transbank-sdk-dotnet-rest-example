@@ -83,7 +83,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatpassComercioController.cs" />
-    <Compile Include="Controllers\TransaccionCompleta.cs" />
+    <Compile Include="Controllers\TransaccionCompletaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
