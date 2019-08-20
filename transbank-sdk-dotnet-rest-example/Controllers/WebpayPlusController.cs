@@ -355,20 +355,38 @@ namespace transbanksdkdotnetrestexample.Controllers
             return View();
         }
 
-        public ActionResult MallDeferredRefund()
-        {
-            throw new NotImplementedException();
-        }
-        
         public ActionResult ExecuteMallDeferredRefund()
         {
-            throw new NotImplementedException();
+            var token = Request.Form["token_ws"];
+            var buyOrder = Request.Form["buy_order"];
+            var commerceCode = Request.Form["commerce_code"];
+            var amount = decimal.Parse(Request.Form["amount"]);
+            ViewBag.Token = token;
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallDeferredStatus", "WebpayPlus", null, Request.Url.Scheme);
+
+            ViewBag.SaveAmount = amount;
+            ViewBag.SaveCommerceCode = commerceCode;
+            ViewBag.SaveToken = token;
+            ViewBag.SaveBuyOrder = buyOrder;
+
+            var result = MallDeferredTransaction.Refund(token, buyOrder, commerceCode, amount);
+
+            ViewBag.Result = result;
+
+            return View();
         }
 
-        public ActionResult MallDeferredStatus()
+        public ActionResult ExecuteMallDeferredStatus()
         {
-            throw new NotImplementedException();
-        }
+            var token = Request.Form["token_ws"];
 
+            var result = MallDeferredTransaction.Status(token);
+
+            ViewBag.Result = result;
+            ViewBag.SaveToke = token;
+
+            return View();
+        }
     }
 }
