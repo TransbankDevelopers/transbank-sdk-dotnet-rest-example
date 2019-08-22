@@ -94,7 +94,9 @@
   <ItemGroup>
     <Content Include="Views\PatpassComercio\Start.cshtml" />
     <Content Include="Views\PatpassComercio\Status.cshtml" />
+    <Content Include="Views\TransaccionCompleta\Commit.cshtml" />
     <Content Include="Views\TransaccionCompleta\Create.cshtml" />
+    <Content Include="Views\TransaccionCompleta\Installments.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -129,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\SDK\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{26abdba6-0b33-42d8-9240-4b51d5effcc7}</Project>
+      <Project>{37249814-3467-4f75-a448-9dd2af65bfc6}</Project>
       <Name>Transbank</Name>
     </ProjectReference>
   </ItemGroup>
