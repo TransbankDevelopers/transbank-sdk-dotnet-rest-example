@@ -91,7 +91,9 @@
     <Compile Include="Controllers\PatpassByWebpayController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\OneclickMall\InscriptionFinish.cshtml" />
     <Content Include="Views\OneclickMall\InscriptionStart.cshtml" />
+    <Content Include="Views\OneclickMall\TransactionAuthorize.cshtml" />
     <Content Include="Views\PatpassComercio\Start.cshtml" />
     <Content Include="Views\PatpassComercio\Status.cshtml" />
     <Content Include="Views\TransaccionCompleta\Create.cshtml" />

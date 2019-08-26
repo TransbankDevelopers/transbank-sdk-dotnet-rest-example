@@ -4,16 +4,24 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<h4>Inscription.Start</h4>
+<h4>MallTransaction.Authorize</h4>
 
 <h4>Request:</h4>
 <pre style="background-color: lightyellow;">
-POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/inscriptions
+POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/transactions
 <code class="json">
     {
         "user_name": "@ViewBag.UserName",
-        "email": "@ViewBag.Email"
-        "return_url": "@ViewBag.ReturnUrl"
+        "tbk_user": "@ViewBag.TbkUser",
+        "buy_order": "@ViewBag.BuyOrder",
+        "details": [
+            {
+                "amount": "@ViewBag.Details.Amount",
+                "commerce_code": "@ViewBag.Details.CommerceCode",
+                "buy_order": "@ViewBag.Details.BuyOrder",
+                "installments_number": "@ViewBag.Details.InstallmentsNumber"
+            }
+        ]
     }
 </code>
 </pre>
@@ -21,7 +29,7 @@ POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/oneclick/v1.0/ins
 <h4>Response:</h4>
 <pre>
 <code>
-    @ViewBag.Result
+@ViewBag.Result
 </code>
 </pre>
 
