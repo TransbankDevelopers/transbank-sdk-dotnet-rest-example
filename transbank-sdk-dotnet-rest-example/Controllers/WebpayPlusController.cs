@@ -302,5 +302,116 @@ namespace transbanksdkdotnetrestexample.Controllers
         }
 
         #endregion Webpay Plus Mall
+
+        public ActionResult MallDeferredCreate()
+        {
+            var random = new Random();
+            var buyOrder = random.Next(9999999).ToString();
+            var sessionId = random.Next(9999999).ToString();
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("MallDeferredCommit", "WebpayPlus", null, Request.Url.Scheme);
+
+            var transactions = new List<TransactionDetail>();
+            transactions.Add(new TransactionDetail(
+                random.Next(9999999),
+                "597055555545",
+                random.Next(9999999).ToString()
+            ));
+            transactions.Add(new TransactionDetail(
+                random.Next(9999999),
+                "597055555546",
+                random.Next(9999999).ToString()
+            ));
+            
+            var result = MallDeferredTransaction.Create(buyOrder, sessionId, returnUrl, transactions);
+
+            ViewBag.Result = result;
+            ViewBag.BuyOrder = buyOrder;
+            ViewBag.SessionId = sessionId;
+            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.Transactions = transactions;
+            ViewBag.Action = result.Url;
+            ViewBag.Token = result.Token;
+
+            return View();
+        }
+        
+        public ActionResult MallDeferredCommit()
+        {
+            var token = Request.Form["token_ws"];
+            var result = MallDeferredTransaction.Commit(token);
+
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+
+            ViewBag.Token = token;
+            ViewBag.Action = urlHelper.Action("ExecuteMallDeferredCapture", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Result = result;
+            ViewBag.ResponseCode = result.Details.First().ResponseCode;
+            ViewBag.SaveToken = token;
+            ViewBag.SaveAmount = result.Details.First().Amount;
+            ViewBag.SaveCommerceCode = result.Details.First().CommerceCode;
+            ViewBag.SaveBuyOrder = result.Details.First().BuyOrder;
+            ViewBag.SaveAuthorizationCode = result.Details.First().AuthorizationCode;
+
+            ViewBag.Success = result.Details.All(detail => detail.ResponseCode == 0);
+            return View();
+        }
+        
+        public ActionResult ExecuteMallDeferredCapture()
+        {
+            var token = Request.Form["token_ws"];
+            var buyOrder = Request.Form["buy_order"];
+            var authorizationCode = Request.Form["authorization_code"];
+            var captureAmount = decimal.Parse(Request.Form["capture_amount"]);
+            string commerceCode = Request.Form["commerce_code"];;
+            var result = MallDeferredTransaction.Capture(token, commerceCode, buyOrder, authorizationCode, captureAmount);
+
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallDeferredRefund", "WebpayPlus", null, Request.Url.Scheme);
+            ViewBag.Token = token;
+            ViewBag.SaveToken = token;
+
+            ViewBag.BuyOrder = buyOrder;
+            ViewBag.AuthorizationCode = authorizationCode;
+            ViewBag.CaptureAmount = captureAmount;
+            ViewBag.CommerceCode = commerceCode;
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult ExecuteMallDeferredRefund()
+        {
+            var token = Request.Form["token_ws"];
+            var buyOrder = Request.Form["buy_order"];
+            var commerceCode = Request.Form["commerce_code"];
+            var amount = decimal.Parse(Request.Form["amount"]);
+            ViewBag.Token = token;
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("ExecuteMallDeferredStatus", "WebpayPlus", null, Request.Url.Scheme);
+
+            ViewBag.SaveAmount = amount;
+            ViewBag.SaveCommerceCode = commerceCode;
+            ViewBag.SaveToken = token;
+            ViewBag.SaveBuyOrder = buyOrder;
+
+            var result = MallDeferredTransaction.Refund(token, buyOrder, commerceCode, amount);
+
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        public ActionResult ExecuteMallDeferredStatus()
+        {
+            var token = Request.Form["token_ws"];
+
+            var result = MallDeferredTransaction.Status(token);
+
+            ViewBag.Result = result;
+            ViewBag.SaveToke = token;
+
+            return View();
+        }
     }
 }
