@@ -97,6 +97,8 @@
     <Content Include="Views\TransaccionCompleta\Commit.cshtml" />
     <Content Include="Views\TransaccionCompleta\Create.cshtml" />
     <Content Include="Views\TransaccionCompleta\Installments.cshtml" />
+    <Content Include="Views\TransaccionCompleta\Refund.cshtml" />
+    <Content Include="Views\TransaccionCompleta\Status.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

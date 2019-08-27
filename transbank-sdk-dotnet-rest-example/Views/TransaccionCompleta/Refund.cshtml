@@ -1,22 +1,18 @@
-@using System.Web.UI.WebControls
 @{
-    ViewBag.Title = "Transacción Completa";
+    ViewBag.Title = "Transaccion Completa";
 }
 
 <h2>@ViewBag.Title</h2>
-<h4>Transaction.Commit</h4>
+<h4>FullTransaction.Refund</h4>
 
 <h4>Request:</h4>
 <pre style="background-color: lightyellow;">
-PUT: https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions/@ViewBag.Token
+POST: https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/transactions/@ViewBag.Token/refunds
 <code class="json">
-{
-   "id_query_installments": "@ViewBag.SaveIdQueryInstallments",
-   "deferred_period_index": "@ViewBag.DeferredPeriodIndex",
-   "grace_period": "@ViewBag.GracePrediods" 
-{
+    {
+        "amount": "@ViewBag.Amount"
+    }
 </code>
-
 </pre>
 
 <h4>Response:</h4>

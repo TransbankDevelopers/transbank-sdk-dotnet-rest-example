@@ -1,24 +1,26 @@
 using System;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 using Transbank.Webpay.TransaccionCompleta;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
     public class TransaccionCompletaController : Controller
     {
-
+        #region Transaccion Completa
         public ActionResult Create()
         {
             var random = new Random();
 
             var buy_order = random.Next(999999999).ToString();
             var session_id = random.Next(9999999).ToString();
-            var amount = random.Next(1000, 999999);
+            var amount = 10000;
             var cvv = 123;
             var card_number = "4051885600446623";
             var card_expiration_date = "22/10";
             
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var returnUrl = urlHelper.Action("Installments", "TransaccionCompleta", null, Request.Url.Scheme);
 
             var result = FullTransaction.Create(
@@ -49,26 +51,85 @@ namespace transbanksdkdotnetrestexample.Controllers
         {
             var token = Request.Form["token_ws"];
             var installments_number = 10;
-            
+            ViewBag.Token = token;
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.SaveToken = token;
+            var returnUrl = urlHelper.Action("Commit", "TransaccionCompleta", null, Request.Url.Scheme);
+            ViewBag.Action = returnUrl;
             var result = FullTransaction.Installments(
                 token,
                 installments_number);
-            
-            
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            var returnUrl = urlHelper.Action("Installments", "TransaccionCompleta", null, Request.Url.Scheme);
-
-
-            ViewBag.Action = returnUrl;
-            ViewBag.Token = token;
             ViewBag.InstallmentsNumber = installments_number;
-            ViewBag.IdQueryInstallmentss = result.IdQueryInstallments;
+            ViewBag.SaveIdQueryInstallments = result.IdQueryInstallments.ToString();
             ViewBag.Result = result;
             ViewBag.ReturnUrl = returnUrl;
 
             return View();
 
         }
+        [HttpPost]
+        public ActionResult Commit()
+        {
+            var token = Request.Form["token_ws"];
+            var idQueryInstallments = int.Parse(Request.Form["id_query_installments"]);
+            var deferredPeriodsIndex = 10;
+            var gracePeriods = false;
+
+            var result = FullTransaction.Commit(token, idQueryInstallments, deferredPeriodsIndex, gracePeriods);
+            
+            UrlHelper urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("Status", "TransaccionCompleta", null, Request.Url.Scheme);
+
+
+            ViewBag.SaveIdQueryInstallments = idQueryInstallments;
+            ViewBag.DeferredPeriodIndex = deferredPeriodsIndex;
+            ViewBag.GracePrediods = gracePeriods;
+            ViewBag.Action = returnUrl;
+            ViewBag.Token = token;
+            ViewBag.Result = result;
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult Status()
+        {
+            var token = Request.Form["token_ws"];
+
+            var result = FullTransaction.Status(token);
+            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("Refund", "TransaccionCompleta", null, Request.Url.Scheme);
+
+            ViewBag.Action = returnUrl;
+            ViewBag.Token = token;
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Refund()
+        {
+            var token = Request.Form["token_ws"];
+            var amount = 10000;
+
+            var result = FullTransaction.Refund(token, amount);
+            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("Status", "TransaccionCompleta", null, Request.Url.Scheme);
+
+            ViewBag.Amount = amount;
+            ViewBag.Action = returnUrl;
+            ViewBag.Token = token;
+            ViewBag.Result = result;
+
+            return View();
+        }
+        
+
+        #endregion
+        
         
         
         
