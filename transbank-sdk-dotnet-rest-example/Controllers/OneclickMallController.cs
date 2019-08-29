@@ -79,6 +79,49 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.BuyOrder = buyOrder;
             ViewBag.Details = details.First();
             ViewBag.Result = result;
+            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("TransactionRefund", "OneclickMall", null, Request.Url.Scheme);
+
+            return View();
+        }
+        
+        public ActionResult InscriptionDelete()
+        {
+            var userName = Request.Form["user_name"];
+            var tbkUser = Request.Form["TBK_TOKEN"];
+
+            Inscription.Delete(userName, tbkUser);
+
+            ViewBag.UserName = userName;
+            ViewBag.TbkUser = tbkUser;
+
+            return View();
+        }
+        
+        public ActionResult TransactionRefund()
+        {
+            
+            var buyOrder = Request.Form["buy_order"];
+            var childCommerceCode = Request.Form["child_commerce_code"];
+            var childBuyOrder = Request.Form["child_buy_order"];
+            var amount = decimal.Parse(Request.Form["amount"]);
+            var token = Request.Form["TBK_TOKEN"];
+            var userName = Request.Form["user_name"];
+
+            var result = MallTransaction.Refund(buyOrder, childCommerceCode,childBuyOrder,amount);
+            Console.WriteLine(result);
+
+            ViewBag.BuyOrder = buyOrder;
+            ViewBag.ChildCommerceCode = childCommerceCode;
+            ViewBag.ChildBuyOrder = childBuyOrder;
+            ViewBag.Amount = amount;
+            ViewBag.Result = result;
+            ViewBag.Token = token;
+            ViewBag.UserName = userName;
+            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            ViewBag.Action = urlHelper.Action("InscriptionDelete", "OneclickMall", null, Request.Url.Scheme);
 
             return View();
         }
