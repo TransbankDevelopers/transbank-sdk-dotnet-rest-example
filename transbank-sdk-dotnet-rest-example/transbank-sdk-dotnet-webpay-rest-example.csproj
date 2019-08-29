@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OneclickMallController.cs" />
     <Compile Include="Controllers\PatpassComercioController.cs" />
     <Compile Include="Controllers\TransaccionCompletaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -90,6 +91,11 @@
     <Compile Include="Controllers\PatpassByWebpayController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\OneclickMall\InscriptionFinish.cshtml" />
+    <Content Include="Views\OneclickMall\InscriptionStart.cshtml" />
+    <Content Include="Views\OneclickMall\TransactionAuthorize.cshtml" />
+    <Content Include="Views\OneclickMall\InscriptionDelete.cshtml" />
+    <Content Include="Views\OneclickMall\TransactionRefund.cshtml" />
     <Content Include="Views\PatpassComercio\Start.cshtml" />
     <Content Include="Views\PatpassComercio\Status.cshtml" />
     <Content Include="Views\TransaccionCompleta\Create.cshtml" />

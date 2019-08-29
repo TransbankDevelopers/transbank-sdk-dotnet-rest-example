@@ -1,126 +1,136 @@
 ﻿<h1>Ejemplos Webpay</h1>
-<table border="0" style="margin-top:50px;" class="table">
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Service</th>
+        <th scope="col">Create</th>
+        <th scope="col">Refund</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>
-            <h3>Webpay Plus</h3>
+            Webpay Plus
         </td>
         <td>
-            <h3>@Html.ActionLink("Crear Transacción", "NormalCreate", "WebpayPlus")</h3>
+            @Html.ActionLink("Crear Transacción", "NormalCreate", "WebpayPlus")
         </td>
         <td>
-            <h3>@Html.ActionLink("Reembolsar Transacción", "NormalRefund", "WebpayPlus")</h3>
+            @Html.ActionLink("Reembolsar Transacción", "NormalRefund", "WebpayPlus")
         </td>
         <td>
-            <h3>@Html.ActionLink("Estado de la Transacción", "NormalStatus", "WebpayPlus")</h3>
+            @Html.ActionLink("Estado de la Transacción", "NormalStatus", "WebpayPlus")
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Webpay Plus Mall</h3>
+            Webpay Plus Mall
         </td>
         <td>
-            <h3>@Html.ActionLink("Crear Transacción", "MallCreate", "WebpayPlus")</h3>
+            @Html.ActionLink("Crear Transacción", "MallCreate", "WebpayPlus")
         </td>
         <td>
-            <h3> - </h3>
+            -
         </td>
         <td>
-            <h3> - </h3>
+            -
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Webpay Plus Diferido</h3>
+            Webpay Plus Diferido
         </td>
         <td>
-            <h3>@Html.ActionLink("Crear Transacción", "DeferredCreate", "WebpayPlus")</h3>
+            @Html.ActionLink("Crear Transacción", "DeferredCreate", "WebpayPlus")
         </td>
         <td>
-            <h3>@Html.ActionLink("Reembolsar Transacción", "DeferredRefund", "WebpayPlus")</h3>
+            @Html.ActionLink("Reembolsar Transacción", "DeferredRefund", "WebpayPlus")
         </td>
         <td>
-            <h3>@Html.ActionLink("Estado de la Transacción", "DeferredStatus", "WebpayPlus")</h3>
-        </td>
-    </tr>
-    <tr>
-            <td>
-                <h3>Webpay Plus Mall Diferido</h3>
-            </td>
-            <td>
-                <h3>@Html.ActionLink("Crear Transacción", "MallDeferredCreate", "WebpayPlus")</h3>
-            </td>
-            <td>
-                <h3> - </h3>
-            </td>
-            <td>
-                <h3> - </h3>
-            </td>
-        </tr>
-    <tr>
-        <td>
-            <h3>Transacción Completa</h3>
-        </td>
-        <td>
-            <h3>
-                <a href="tbk-complete.aspx">Webpay Completa</a>
-            </h3>
-        </td>
-        <td>
-            <h3>
-                <a href="tbk-nullify-complete.aspx">Webpay Completa Anulación </a>
-            </h3>
-        </td>
-        <td>
-            <h3> - </h3>
+            @Html.ActionLink("Estado de la Transacción", "DeferredStatus", "WebpayPlus")
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Webpay OneClick</h3>
+            Webpay Plus Mall Diferido
         </td>
         <td>
-            <h3>
-                <a href="tbk-oneclick.aspx">Webpay OneClick</a>
-            </h3>
+            @Html.ActionLink("Crear Transacción", "MallDeferredCreate", "WebpayPlus")
         </td>
         <td>
-            <h3> - </h3>
+            -
         </td>
         <td>
-            <h3> - </h3>
+            -
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Patpass by Webpay</h3>
+            Transacción Completa
         </td>
         <td>
-            <h3>@Html.ActionLink("Crear Transaccion", "Create", "PatpassByWebpay")</h3>
+
+            <a href="tbk-complete.aspx">Webpay Completa</a>
+
         </td>
         <td>
-            <h3> - </h3>
+
+            <a href="tbk-nullify-complete.aspx">Webpay Completa Anulación </a>
+
         </td>
         <td>
-            <h3><h3>@Html.ActionLink("Estado de la Transacción", "RequestStatus", "PatpassByWebpay")</h3></h3>
+            -
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Patpass Comercio</h3>
+            OneClick Mall
         </td>
         <td>
-            <h3>@Html.ActionLink("Iniciar Inscripcion", "Start", "PatpassComercio")</h3>
+            @Html.ActionLink("Comenzar Inscripción", "InscriptionStart", "OneclickMall")
         </td>
         <td>
-            <h3>-</h3>
+            -
+        </td>
+        <td>
+            -
         </td>
     </tr>
     <tr>
         <td>
-            <h3>Transaccion Completa</h3>
+            Patpass by Webpay
         </td>
         <td>
-            <h3>@Html.ActionLink("Iniciar Transaccion", "Create", "TransaccionCompleta")</h3>
+            @Html.ActionLink("Crear Transaccion", "Create", "PatpassByWebpay")
+        </td>
+        <td>
+            -
+        </td>
+        <td>
+
+            @Html.ActionLink("Estado de la Transacción", "RequestStatus", "PatpassByWebpay")
+
         </td>
     </tr>
+    <tr>
+        <td>
+            Patpass Comercio
+        </td>
+        <td>
+            @Html.ActionLink("Iniciar Inscripcion", "Start", "PatpassComercio")
+        </td>
+        <td>
+            -
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Transaccion Completa
+        </td>
+        <td>
+            @Html.ActionLink("Iniciar Transaccion", "Create", "TransaccionCompleta")
+        </td>
+    </tr>
+    </tbody>
 </table>
