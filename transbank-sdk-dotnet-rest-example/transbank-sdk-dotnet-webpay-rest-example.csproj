@@ -83,7 +83,6 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatpassComercioController.cs" />
-    <Compile Include="Controllers\TransaccionCompleta.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -92,6 +91,8 @@
     <Compile Include="Controllers\PatpassByWebpayController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\PatpassComercio\End.cshtml" />
+    <Content Include="Views\PatpassComercio\Return.cshtml" />
     <Content Include="Views\PatpassComercio\Start.cshtml" />
     <Content Include="Views\PatpassComercio\Status.cshtml" />
     <Content Include="Views\TransaccionCompleta\Create.cshtml" />

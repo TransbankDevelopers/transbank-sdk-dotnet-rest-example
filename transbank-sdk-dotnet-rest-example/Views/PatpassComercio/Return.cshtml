@@ -1,0 +1,22 @@
+@{
+    ViewBag.Title = "Patpass Comercio";
+}
+
+<h2>@ViewBag.Title</h2>
+<h4>Inscription.Finish</h4>
+
+<pre>
+    <code class="html">
+        <form action="@ViewBag.Url" method="post">
+            <input type="hidden" value="@ViewBag.Token" name="tokenComercio" />
+            <input type="submit" value="Submit"/>
+        </form>
+    </code>
+</pre>
+
+<form action="@ViewBag.Url" method="post">
+    <input type="hidden" value="@ViewBag.Token" name="tokenComercio" />
+    <input type="submit" value="Submit"/>
+</form>
+
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new { @class = "btn btn-primary", style = "margin-top: 20px;" })

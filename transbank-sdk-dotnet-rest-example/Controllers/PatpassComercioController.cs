@@ -1,25 +1,24 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
-using Transbank.Common;
 using Transbank.Patpass.PatpassComercio;
 
 namespace transbanksdkdotnetrestexample.Controllers
 {
     public class PatpassComercioController : Controller
     {
+        #region Patpass Comercio
         public ActionResult Start()
         {
+            var baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
             var random = new Random();
             
-            var url = "https://www.comercio.com/urlretorno";
+            var url = baseUrl + "/return";
             var name = "nombre";
             var f_lastname = "pApellido";
             var s_lastname = "sApellido";
             var rut = "14959787-6";
             var service_id = random.Next(999999999).ToString();
-            var final_url = "https://www.comercio.com/urlrfinal";
+            var final_url = baseUrl + "/end";
             var commerce_code = "28785666";
             var max_amount = random.Next(1000, 999999);
             var phone_number = random.Next(999999999).ToString();
@@ -76,6 +75,19 @@ namespace transbanksdkdotnetrestexample.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Return()
+        {
+            var token = Request.Form["token_ws"];
+            var url = Request.Form["url"];
+
+            ViewBag.Token = token;
+            ViewBag.Url = url;
+
+            return View();
+        }
+        
+        [HttpPost]
         public ActionResult Status()
         {
             var token = Request.Form["token_ws"];
@@ -88,6 +100,7 @@ namespace transbanksdkdotnetrestexample.Controllers
 
             return View();
         }
-
+        
+        #endregion
     }
 }
