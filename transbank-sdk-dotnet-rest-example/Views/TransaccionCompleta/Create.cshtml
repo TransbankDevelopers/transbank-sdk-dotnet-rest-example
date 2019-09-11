@@ -24,8 +24,9 @@ POST:  https://webpay3gint.transbank.cl/rswebpaytransaction/api/webpay/v1.0/tran
 <h4>Response:</h4>
 <pre>
     <code>
-        @ViewBag.Result;
+        @ViewBag.Result.ToString();
     </code>
 </pre>
 
 <a href="javascript: document.globalForm.submit();" class="btn btn-primary">Crear Transacción</a>
+@Html.ActionLink("Volver al inicio", "Index", "Home", null, new {@class = "btn btn-primary"})
