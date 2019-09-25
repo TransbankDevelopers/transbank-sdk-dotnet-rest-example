@@ -21,7 +21,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var service_id = random.Next(999999999).ToString();
             var final_url = "https://www.comercio.com/urlrfinal";
             var commerce_code = "28785666";
-            var max_amount = random.Next(1000, 999999).ToString();
+            var max_amount = 0;
             var phone_number = random.Next(999999999).ToString();
             var mobile_number = random.Next(999999999).ToString();
             var patpass_name = "nombre del patpass";

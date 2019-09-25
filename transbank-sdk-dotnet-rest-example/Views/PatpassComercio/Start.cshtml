@@ -38,3 +38,6 @@ POST: https://www.pagoautomaticocontarjetas.cl/restpatpass/v1/services/patInscri
 </pre>
 
 <a href="javascript: document.globalForm.submit();" class="btn btn-primary">Iniciar Inscripción</a>
+<script>
+    document.globalForm.innerHTML += '<input type="hidden" name="tokenComercio" id="tokenComercio" value="@ViewBag.Token" />'
+</script>
