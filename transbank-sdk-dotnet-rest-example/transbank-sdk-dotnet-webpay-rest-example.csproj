@@ -74,14 +74,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
     <Folder Include="Views\WebpayPlus\" />
     <Folder Include="Views\PatpassByWebpay\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OneclickMallController.cs" />
     <Compile Include="Controllers\PatpassComercioController.cs" />
     <Compile Include="Controllers\TransaccionCompletaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -92,6 +90,11 @@
     <Compile Include="Controllers\PatpassByWebpayController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\OneclickMall\InscriptionDelete.cshtml" />
+    <Content Include="Views\OneclickMall\InscriptionFinish.cshtml" />
+    <Content Include="Views\OneclickMall\InscriptionStart.cshtml" />
+    <Content Include="Views\OneclickMall\TransactionAuthorize.cshtml" />
+    <Content Include="Views\OneclickMall\TransactionRefund.cshtml" />
     <Content Include="Views\PatpassComercio\Start.cshtml" />
     <Content Include="Views\PatpassComercio\Status.cshtml" />
     <Content Include="Views\TransaccionCompleta\Commit.cshtml" />
@@ -103,6 +106,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallDeferredCapture.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallDeferredRefund.cshtml" />
+    <Content Include="Views\WebpayPlus\ExecuteMallDeferredStatus.cshtml" />
+    <Content Include="Views\WebpayPlus\MallDeferredCommit.cshtml" />
+    <Content Include="Views\WebpayPlus\MallDeferredCreate.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
@@ -132,8 +140,8 @@
     <Content Include="Views\PatpassByWebpay\RequestStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SDK\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{37249814-3467-4f75-a448-9dd2af65bfc6}</Project>
+    <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
+      <Project>{84860547-6ef7-4597-9584-ef1129bf694a}</Project>
       <Name>Transbank</Name>
     </ProjectReference>
   </ItemGroup>
