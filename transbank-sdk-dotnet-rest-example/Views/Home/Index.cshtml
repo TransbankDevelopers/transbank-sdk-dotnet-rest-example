@@ -71,16 +71,16 @@
         </td>
         <td>
 
-            <a href="tbk-complete.aspx">Webpay Completa</a>
+            @Html.ActionLink("Crear Transacción", "Create", "TransaccionCompleta")
 
         </td>
         <td>
 
-            <a href="tbk-nullify-complete.aspx">Webpay Completa Anulación </a>
+            @Html.ActionLink("Reembolsar Transacción", "Refund", "TransaccionCompleta")
 
         </td>
         <td>
-            -
+            @Html.ActionLink("Estado de la Transacción", "Status", "TransaccionCompleta")
         </td>
     </tr>
     <tr>
