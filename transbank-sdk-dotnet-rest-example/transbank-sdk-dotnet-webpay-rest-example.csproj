@@ -139,8 +139,8 @@
     <Content Include="Views\PatpassByWebpay\RequestStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\sdk\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{94B88023-8FB0-487D-B1CC-BDE14973C689}</Project>
+    <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
+      <Project>{E4ED865C-C359-4C99-BFC4-FDF95FB206B6}</Project>
       <Name>Transbank</Name>
     </ProjectReference>
   </ItemGroup>
