@@ -69,10 +69,13 @@
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="MQTTnet">
-      <HintPath>..\packages\MQTTnet.3.0.8\lib\net452\MQTTnet.dll</HintPath>
+      <HintPath>..\packages\MQTTnet.3.0.15\lib\net461\MQTTnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Transbank">
+      <HintPath>..\packages\TransbankSDK.3.0.0\lib\netstandard2.0\Transbank.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -148,12 +151,6 @@
     <Content Include="Views\OneclickMallDeferred\TransactionAuthorize.cshtml" />
     <Content Include="Views\OneclickMallDeferred\TransactionRefund.cshtml" />
     <Content Include="Views\OneclickMallDeferred\TransactionCapture.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\sdk\Transbank\Transbank.csproj">
-      <Project>{D7A4C931-0D4D-4C77-AD4E-6DB6B58719C0}</Project>
-      <Name>Transbank</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
