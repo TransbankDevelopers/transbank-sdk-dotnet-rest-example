@@ -1,6 +1,7 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "transbank-sdk-dotnet-webpay-rest-example", "transbank-sdk-dotnet-rest-example\transbank-sdk-dotnet-webpay-rest-example.csproj", "{6044EA50-4934-4382-914B-F4A9A0722183}"
 EndProject
 Global
@@ -13,5 +14,11 @@ Global
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6044EA50-4934-4382-914B-F4A9A0722183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27B33FCC-564C-4E3E-A996-1F96B3C595A6}
 	EndGlobalSection
 EndGlobal
