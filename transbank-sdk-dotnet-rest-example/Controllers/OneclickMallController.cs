@@ -20,7 +20,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.Email = email;
             ViewBag.ReturnUrl = returnUrl;
 
-            var response = Inscription.Start(userName, email, returnUrl);
+            var response = MallInscription.Start(userName, email, returnUrl);
             ViewBag.Result = response;
             
             ViewBag.Action = response.Url;
@@ -42,7 +42,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var token = Request.Form["TBK_TOKEN"];
             ViewBag.Token = token;
 
-            var result = Inscription.Finish(token);
+            var result = MallInscription.Finish(token);
 
             ViewBag.AuthorizationCode = result.AuthorizationCode;
             ViewBag.ResponseCode = result.ResponseCode;
@@ -91,7 +91,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var userName = Request.Form["user_name"];
             var tbkUser = Request.Form["TBK_TOKEN"];
 
-            Inscription.Delete(userName, tbkUser);
+            MallInscription.Delete(userName, tbkUser);
 
             ViewBag.UserName = userName;
             ViewBag.TbkUser = tbkUser;

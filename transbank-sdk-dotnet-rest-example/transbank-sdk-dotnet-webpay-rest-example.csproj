@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>transbanksdkdotnetrestexample</RootNamespace>
     <AssemblyName>transbank-sdk-dotnet-rest-example</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -150,10 +150,9 @@
     <Content Include="Views\OneclickMallDeferred\TransactionCapture.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\transbank-sdk-dotnet\Transbank\Transbank.csproj">
-      <Project>{3E64654A-70EF-46F6-AA11-03EC16DA06D8}</Project>
+    <ProjectReference Include="..\..\sdk\Transbank\Transbank.csproj">
+      <Project>{D7A4C931-0D4D-4C77-AD4E-6DB6B58719C0}</Project>
       <Name>Transbank</Name>
-      <HintPath>..\packages\TransbankSDK.2.6.0\lib\net452\Transbank.dll</HintPath>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
