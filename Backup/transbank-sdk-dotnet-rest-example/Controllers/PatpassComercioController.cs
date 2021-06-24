@@ -12,28 +12,26 @@ namespace transbanksdkdotnetrestexample.Controllers
         public ActionResult Start()
         {
             var random = new Random();
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
-            var returnUrl = urlHelper.Action("Start", "PatpassComercio", null, Request.Url.Scheme);
-            var url = urlHelper.Action("Finish", "PatpassComercio", null, Request.Url.Scheme);
-
-            var name = "Pepito";
-            var f_lastname = "Perez";
-            var s_lastname = "Perez";
-            var rut = "18439979-2";
+            
+            var url = "https://www.comercio.com/urlretorno";
+            var name = "nombre";
+            var f_lastname = "pApellido";
+            var s_lastname = "sApellido";
+            var rut = "14959787-6";
             var service_id = random.Next(999999999).ToString();
-            var final_url = urlHelper.Action("Index", "Home",  null, Request.Url.Scheme);
-            var commerce_code = Inscription.CommerceCode;
-            var max_amount = 1000;
+            var final_url = "https://www.comercio.com/urlrfinal";
+            var commerce_code = "28785666";
+            var max_amount = 0;
             var phone_number = random.Next(999999999).ToString();
             var mobile_number = random.Next(999999999).ToString();
             var patpass_name = "nombre del patpass";
             var client_email = "persona@persona.cl";
             var commerce_email = "comercio@comercio.cl";
             var address = "huerfanos 101";
-            var city = "Santiago";
+            var city = "city";
             
-            
-            
+            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
+            var returnUrl = urlHelper.Action("Start", "PatpassComercio", null, Request.Url.Scheme);
 
             var result = Inscription.Start(
                 url: url,
@@ -80,27 +78,15 @@ namespace transbanksdkdotnetrestexample.Controllers
         public ActionResult Status()
         {
             var token = Request.Form["token_ws"];
-            var tokenComercio = Request.Form["tokenComercio"];
-            var result = Inscription.Status(tokenComercio);
+            var result = Inscription.Status(token);
             
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
-            ViewBag.Action = result.UrlVoucher;
-            ViewBag.Token = tokenComercio;
-            ViewBag.Status = result.Status;
-
-            return View();
-        }
-
-        public ActionResult Finish()
-        {
-            var token = Request.Form["j_token"];
-            var urlHelper = new UrlHelper(ControllerContext.RequestContext);
             ViewBag.Action = urlHelper.Action("Status", "PatpassComercio", null, Request.Url.Scheme);
-            ViewBag.Token = token;
+            ViewBag.Result = result;
+
             return View();
         }
-
 
     }
 }

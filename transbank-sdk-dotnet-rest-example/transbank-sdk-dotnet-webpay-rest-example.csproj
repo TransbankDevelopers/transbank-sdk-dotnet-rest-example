@@ -86,11 +86,12 @@
     <Reference Include="MQTTnet">
       <HintPath>..\packages\MQTTnet.3.0.15\lib\net461\MQTTnet.dll</HintPath>
     </Reference>
-    <Reference Include="Transbank">
-      <HintPath>..\packages\TransbankSDK.3.0.0\lib\netstandard2.0\Transbank.dll</HintPath>
+    <Reference Include="Transbank, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TransbankSDK.3.0.1\lib\netstandard2.0\Transbank.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\PatpassComercio\Finish.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
