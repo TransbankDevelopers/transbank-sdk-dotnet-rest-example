@@ -19,8 +19,8 @@ namespace transbanksdkdotnetrestexample.Controllers
             ViewBag.UserName = userName;
             ViewBag.Email = email;
             ViewBag.ReturnUrl = returnUrl;
-
-            var response = MallInscription.Start(userName, email, returnUrl);
+            //new Options("597055555541", "579B532A7440BB0C9079DED94D31EA1615BACEB56610332264630D42D0A36B1C", WebpayIntegrationType.Test)
+            var response = (new MallInscription()).Start(userName, email, returnUrl);
             ViewBag.Result = response;
             
             ViewBag.Action = response.Url;
@@ -37,12 +37,11 @@ namespace transbanksdkdotnetrestexample.Controllers
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
-        public ActionResult InscriptionFinish()
+        public ActionResult InscriptionFinish(String tbk_token)
         {
-            var token = Request.Form["TBK_TOKEN"];
-            ViewBag.Token = token;
+            ViewBag.Token = tbk_token;
 
-            var result = MallInscription.Finish(token);
+            var result = (new MallInscription()).Finish(tbk_token);
 
             ViewBag.AuthorizationCode = result.AuthorizationCode;
             ViewBag.ResponseCode = result.ResponseCode;
@@ -71,7 +70,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             List<PaymentRequest> details = new List<PaymentRequest>();
             details.Add(new PaymentRequest(childCommerceCode, childBuyOrder, amount, installmentsNumber));
 
-            var result = MallTransaction.Authorize(userName, tbkUser, buyOrder, details);
+            var result = (new MallTransaction()).Authorize(userName, tbkUser, buyOrder, details);
             Console.WriteLine(result);
 
             ViewBag.UserName = userName;
@@ -91,7 +90,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var userName = Request.Form["user_name"];
             var tbkUser = Request.Form["TBK_TOKEN"];
 
-            MallInscription.Delete(userName, tbkUser);
+            (new MallInscription()).Delete(tbkUser, userName);
 
             ViewBag.UserName = userName;
             ViewBag.TbkUser = tbkUser;
@@ -109,7 +108,7 @@ namespace transbanksdkdotnetrestexample.Controllers
             var token = Request.Form["TBK_TOKEN"];
             var userName = Request.Form["user_name"];
 
-            var result = MallTransaction.Refund(buyOrder, childCommerceCode,childBuyOrder,amount);
+            var result = (new MallTransaction()).Refund(buyOrder, childCommerceCode,childBuyOrder,amount);
             Console.WriteLine(result);
 
             ViewBag.BuyOrder = buyOrder;
