@@ -27,7 +27,7 @@ namespace transbanksdkdotnetrestexample.Controllers
 
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
             var returnUrl = urlHelper.Action("Commit", "PatpassByWebpay", null, Request.Url.Scheme);
-            var result = Transaction.Create(buyOrder, sessionId, amount, returnUrl, service_id,
+            var result = (new Transaction()).Create(buyOrder, sessionId, amount, returnUrl, service_id,
                 card_holder_id, card_holder_name, card_holder_last_name1, card_holder_last_name2,
                 card_holder_mail, cellphone_number, expiration_date, commerce_mail, uf_flag);
 
@@ -55,18 +55,17 @@ namespace transbanksdkdotnetrestexample.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Commit()
+
+        public ActionResult Commit(String token_ws)
         {
-            var token = Request.Form["token_ws"];
-            var result = Transaction.Commit(token);
+            var result = (new Transaction()).Commit(token_ws);
 
             var urlHelper = new UrlHelper(ControllerContext.RequestContext);
 
-            ViewBag.Token = token;
+            ViewBag.Token = token_ws;
             ViewBag.Action = urlHelper.Action("Status", "PatpassByWebpay", null, Request.Url.Scheme);
             ViewBag.Result = result;
-            ViewBag.SaveToken = token;
+            ViewBag.SaveToken = token_ws;
 
             return View();
         }
@@ -82,7 +81,7 @@ namespace transbanksdkdotnetrestexample.Controllers
         public ActionResult Status()
         {
             var token = Request.Form["token_ws"];
-            var result = Transaction.Status(token);
+            var result = (new Transaction()).Status(token);
 
             ViewBag.Result = result;
 
